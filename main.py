@@ -50,7 +50,7 @@ def uploadFile(filename,currentBits,totalBits,speed,time,args):
 
 def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jdb=None):
     try:
-        bot.editMessageText(message,'🤜Preparando Para Subir☁...')
+        bot.editMessageText(message,'📡Preparando Subida...')
         evidence = None
         fileid = None
         user_info = jdb.get_user(update.message.sender.username)
@@ -116,7 +116,7 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
             tokenize = False
             if user_info['tokenize']!=0:
                tokenize = True
-            bot.editMessageText(message,'🤜Subiendo ☁ Espere Mientras... 😄')
+            bot.editMessageText(message,'☁Subiendo a la Nube...')
             host = user_info['moodle_host']
             user = user_info['moodle_user']
             passw = user_info['moodle_password']
@@ -162,7 +162,7 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
     else:
         client = processUploadFiles(file,file_size,[file],update,bot,message,jdb=jdb)
         file_upload_count = 1
-    bot.editMessageText(message,'🤜Preparando Archivo📄...')
+    bot.editMessageText(message,'📄Preparando Archivo📄...')
     evidname = ''
     files = []
     if client:
@@ -275,12 +275,12 @@ def onmessage(update,bot:ObigramClient):
                     user = str(msgText).split(' ')[1]
                     jdb.create_user(user)
                     jdb.save()
-                    msg = '😃Genial @'+user+' ahora tiene acceso al bot👍'
+                    msg = 'El Usuario @'+user+' ahora tiene acceso al bot👤'
                     bot.sendMessage(update.message.chat.id,msg)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /adduser username❌')
             else:
-                bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
+                bot.sendMessage(update.message.chat.id,'❌XDS No Tienes Permiso❌')
             return
         if '/banuser' in msgText:
             isadmin = jdb.is_admin(username)
@@ -292,12 +292,12 @@ def onmessage(update,bot:ObigramClient):
                         return
                     jdb.remove(user)
                     jdb.save()
-                    msg = '🦶Fuera @'+user+' Baneado❌'
+                    msg = 'Fuera @'+user+' Baneado❌'
                     bot.sendMessage(update.message.chat.id,msg)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /banuser username❌')
             else:
-                bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
+                bot.sendMessage(update.message.chat.id,'❌XDS No Tienes Permiso❌')
             return
         if '/getdb' in msgText:
             isadmin = jdb.is_admin(username)
@@ -305,7 +305,7 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,'Base De Datos👇')
                 bot.sendFile(update.message.chat.id,'database.jdb')
             else:
-                bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
+                bot.sendMessage(update.message.chat.id,'❌XDS No Tienes Permiso❌')
             return
         # end
 
@@ -329,7 +329,7 @@ def onmessage(update,bot:ObigramClient):
                    getUser['zips'] = size
                    jdb.save_data_user(username,getUser)
                    jdb.save()
-                   msg = '😃Genial los zips seran de '+ sizeof_fmt(size*1024*1024)+' las partes👍'
+                   msg = 'Zips Cambiados a '+ sizeof_fmt(size*1024*1024)+'✅'
                    bot.sendMessage(update.message.chat.id,msg)
                 except:
                    bot.sendMessage(update.message.chat.id,'❌Error en el comando /zips size❌')
@@ -480,10 +480,10 @@ def onmessage(update,bot:ObigramClient):
         thread.store('msg',message)
 
         if '/start' in msgText:
-            start_msg = 'Bot          : MZFree v7.1\n'
+            start_msg = 'Bot: MZFree v7.1\n'
             start_msg+= 'Desarrollador: @Danny5367\n'
-            start_msg+= 'Api          : https://github.com/Danny5367\n'
-            start_msg+= 'Uso          :Envia Enlaces De Descarga y Archivos Para Procesar (Configure Antes De Empezar , Vea El /tutorial)\n'
+            start_msg+= 'Api : https://github.com/Danny5367\n'
+            start_msg+= 'Uso : Envia Enlaces De Descarga y Archivos Para Procesar (Configure Antes De Empezar , Vea El /tutorial)\n'
             bot.editMessageText(message,start_msg)
         elif '/files' == msgText and user_info['cloudtype']=='moodle':
              proxy = ProxyCloud.parse(user_info['proxy'])

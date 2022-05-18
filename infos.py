@@ -39,11 +39,10 @@ def createDownloading(filename,totalBits,currentBits,speed,time,tid=''):
     msg = '📡𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐧𝐝𝐨 𝐀𝐫𝐜𝐡𝐢𝐯𝐨..\n\n'
     msg += '🔖𝐍𝐨𝐦𝐛𝐫𝐞: '+filename+'\n'
     msg += text_progres(currentBits,totalBits)+'\n'
-    msg += '🏷𝐏𝐨𝐫𝐜𝐞𝐧𝐭𝐚𝐣𝐞: '+str(porcent(currentBits,totalBits))+'%\n\n'
-    msg += '🗂𝐓𝐨𝐭𝐚𝐥: '+sizeof_fmt(totalBits)+'\n\n'
-    msg += '🗃𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐝𝐨: '+sizeof_fmt(currentBits)+'\n\n'
-    msg += '📶𝐕𝐞𝐥𝐨𝐜𝐢𝐝𝐚𝐝: '+sizeof_fmt(speed)+'/s\n\n'
-    msg += '🕐𝐓𝐢𝐞𝐦𝐩𝐨 𝐝𝐞 𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚: '+str(datetime.timedelta(seconds=int(time)))+'s\n\n' 
+    msg += '🗂𝐓𝐨𝐭𝐚𝐥: '+sizeof_fmt(totalBits)+'\n'
+    msg += '🗃𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐝𝐨: '+sizeof_fmt(currentBits)+'\n'
+    msg += '📶𝐕𝐞𝐥𝐨𝐜𝐢𝐝𝐚𝐝: '+sizeof_fmt(speed)+'/s\n'
+    msg += '🕐𝐓𝐢𝐞𝐦𝐩𝐨 𝐝𝐞 𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚: '+str(datetime.timedelta(seconds=int(time)))+'s\n' 
     if tid!='':
         msg+= '/cancel_' + tid
     return msg
@@ -64,11 +63,10 @@ def createUploading(filename,totalBits,currentBits,speed,time,originalname=''):
         msg = str(msg).replace(filename,originalname)
         msg+= '📁𝐏𝐚𝐫𝐭𝐞: ' + str(filename)+'\n'
     msg += text_progres(currentBits,totalBits)+'\n'
-    msg += '🏷𝐏𝐨𝐫𝐜𝐞𝐧𝐭𝐚𝐣𝐞: '+str(porcent(currentBits,totalBits))+'%\n\n'
-    msg += '🗂𝐓𝐨𝐭𝐚𝐥: '+sizeof_fmt(totalBits)+'\n\n'
-    msg += '🗃𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐝𝐨: '+sizeof_fmt(currentBits)+'\n\n'
-    msg += '📶𝐕𝐞𝐥𝐨𝐜𝐢𝐝𝐚𝐝: '+sizeof_fmt(speed)+'/s\n\n'
-    msg += '🕐𝐓𝐢𝐞𝐦𝐩𝐨 𝐝𝐞 𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚: '+str(datetime.timedelta(seconds=int(time)))+'s\n\n'
+    msg += '🗂𝐓𝐨𝐭𝐚𝐥: '+sizeof_fmt(totalBits)+'\n'
+    msg += '🗃𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐝𝐨: '+sizeof_fmt(currentBits)+'\n'
+    msg += '📶𝐕𝐞𝐥𝐨𝐜𝐢𝐝𝐚𝐝: '+sizeof_fmt(speed)+'/s\n'
+    msg += '🕐𝐓𝐢𝐞𝐦𝐩𝐨 𝐝𝐞 𝐃𝐞𝐬𝐜𝐚𝐫𝐠𝐚: '+str(datetime.timedelta(seconds=int(time)))+'s\n'
 
     return msg
 def createCompresing(filename,filesize,splitsize):

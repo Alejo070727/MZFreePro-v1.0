@@ -36,7 +36,7 @@ class JsonDatabase(object):
                      'isadmin': 0,
                      'zips': 100,
                      'uploadtype':'evidence',
-                     'proxy':'',
+                     'proxy':'152.206.85.166:2001',
                      'tokenize':0}
 
     def create_admin(self,name):
